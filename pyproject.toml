@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "clawhermes-qq"
+version = "0.1.0"
+description = "ClawHermes QQ Bot 渠道适配器 — 基于 QQ Bot HTTP API + WebSocket"
+requires-python = ">=3.12"
+dependencies = [
+    "aiohttp>=3.9",
+    "clawhermes",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "pytest-asyncio", "ruff"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
