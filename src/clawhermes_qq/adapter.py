@@ -650,6 +650,15 @@ class QQAdapter(ChannelAdapter):
 # ============================================================================
 
 def create_qq_adapter(
+
+
+    async def handle_webhook(self, body: dict[str, Any]) -> dict[str, Any]:
+        """处理 HTTP Webhook 回调"""
+        # QQ Bot 使用 WebSocket 长连接为主，webhook 为备用
+        event_type = body.get("type", "") or body.get("t", "")
+        if event_type:
+            await self._handle_event(event_type, body.get("d", body))
+        return {"status": "ok"}
     app_id: str = "",
     token: str = "",
     secret: str = "",
