@@ -128,7 +128,7 @@ class QQAdapter(ChannelAdapter):
     # ------------------------------------------------------------------
 
     def __init__(self, config: dict[str, Any] | None = None):
-        super().__init__(ChannelType.WECHAT, config)  # 复用 WECHAT channel_type 占位
+        super().__init__(ChannelType.QQ, config)  # 复用 WECHAT channel_type 占位
         cfg = config or {}
 
         self._qq_config = QQConfig(
@@ -464,7 +464,7 @@ class QQAdapter(ChannelAdapter):
 
         channel_msg = ChannelMessage(
             message_id=msg_id,
-            channel_type=ChannelType.WECHAT,
+            channel_type=ChannelType.QQ,
             user=ChannelUser(
                 user_id=user_id,
                 display_name=author.get("username", "") or f"QQ:{user_id[:12]}",
@@ -496,7 +496,7 @@ class QQAdapter(ChannelAdapter):
 
         channel_msg = ChannelMessage(
             message_id=msg_id,
-            channel_type=ChannelType.WECHAT,
+            channel_type=ChannelType.QQ,
             user=ChannelUser(
                 user_id=user_id,
                 display_name=author.get("username", "") or f"QQ:{user_id[:12]}",
