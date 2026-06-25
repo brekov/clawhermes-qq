@@ -645,12 +645,6 @@ class QQAdapter(ChannelAdapter):
         return message.session_id or message.user.user_id
 
 
-# ============================================================================
-# 工厂函数
-# ============================================================================
-
-def create_qq_adapter(
-
 
     async def handle_webhook(self, body: dict[str, Any]) -> dict[str, Any]:
         """处理 HTTP Webhook 回调"""
@@ -659,6 +653,12 @@ def create_qq_adapter(
         if event_type:
             await self._handle_event(event_type, body.get("d", body))
         return {"status": "ok"}
+
+# ============================================================================
+# 工厂函数
+# ============================================================================
+
+def create_qq_adapter(
     app_id: str = "",
     token: str = "",
     secret: str = "",
